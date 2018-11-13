@@ -21,7 +21,7 @@ pd check
 produce totally different output.
 Next function check is called. It returns 0, when password is accepted, and 1, when rejected.
 ## Decrypt
-Function decrypt takes 2 arguments: pointer to string, and table.
+Function decrypt takes 2 arguments: pointer and table.
 The only important thing about that function is fact, that it overwrites first argument with new value.
 ## Check
 Program loops over characters of given password and calls function decrypt with 2 arguments. Pointer to word 0xfeed000000<hex code of current character>, and local table (0x4040e0 address).
