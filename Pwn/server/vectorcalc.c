@@ -85,7 +85,6 @@ void compute(char *expr, struct vector *vars) {
 			}
 		}
 
-		printf("sp %d pos %d\n", sp, pos);
 		if (expr[pos] == '(') {
 			/* Left paren -- push on stack, wait for something more interesting.  */
 			if (sp > STACK_SIZE)
@@ -97,7 +96,6 @@ void compute(char *expr, struct vector *vars) {
 			if (stack_token[sp-2] != TOKEN_LP)
 				goto syntax_err;
 			stack_token[sp-2] = TOKEN_VAL;
-			printf("( %d\n", sp);
 			stack_value[sp-2] = stack_value[sp-1];
 			sp--;
 			pos++;
@@ -130,7 +128,6 @@ void compute(char *expr, struct vector *vars) {
 			if (sp > STACK_SIZE)
 				goto stack_ovf;
 			stack_token[sp] = TOKEN_VAL;
-			printf("sp %d\n", sp);
 			stack_value[sp++] = vars[expr[pos] - 'a'];
 			pos++;
 		} else if (expr[pos] == '{') {
@@ -155,7 +152,6 @@ void compute(char *expr, struct vector *vars) {
 			}
 			sp++;
 		} else if (expr[pos] == 0 or expr[pos] == '\n') {
-			printf("end %d\n", sp);
 			/* End of the line.  */
 			if (stack_token[sp-2] != TOKEN_START)
 				goto syntax_err;
