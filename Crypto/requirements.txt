@@ -1,0 +1,2 @@
+-e git+https://github.com/arthaud/python3-pwntools.git#egg=pwntools
+pycryptodome==3.7.3
